@@ -33,7 +33,7 @@ class _PieChartPageState extends State<PieChartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pie Chart"),
+        title: Text("Pie Chart "),
       ),
       drawer: Drawer(
         child: DrawerMenu(),
