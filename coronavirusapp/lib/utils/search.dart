@@ -91,7 +91,7 @@ class Search extends SearchDelegate {
                             ? suggestionList[index]['country']
                             : suggestionListSorted[index]['country'],
                         style: TextStyle(
-                            color: Theme.of(context).textSelectionColor,
+                            color: Theme.of(context).textSelectionTheme.selectionColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 17),
                       ),

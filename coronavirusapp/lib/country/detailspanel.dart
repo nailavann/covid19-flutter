@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class DetailsPanel extends StatelessWidget {
   final String title;
   final String count;
-  final Color textColor;
+  var textColor;
   final Color panelColor;
-  const DetailsPanel({Key? key,required this.title,required this.count,required this.textColor,required this.panelColor}) : super(key: key);
+   DetailsPanel({Key? key,required this.title,required this.count,required this.textColor,required this.panelColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

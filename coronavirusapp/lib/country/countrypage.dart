@@ -5,6 +5,7 @@ import 'package:coronavirusapp/utils/search.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:progress_dialog/progress_dialog.dart';
+import '../drawermenu.dart';
 import 'countrydetailspage.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../utils/progress.dart';
@@ -83,6 +84,9 @@ class _CountryPageState extends State<CountryPage> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: DrawerMenu(),
+      ),
       body: countryData == null
           ? Center(child: CircularProgressIndicator())
           : sortedCountryData == null
@@ -128,7 +132,7 @@ class _CountryPageState extends State<CountryPage> {
                                         : sortedCountry['country'],
                                     style: TextStyle(
                                         color: Theme.of(context)
-                                            .textSelectionColor,
+                                            .textSelectionTheme.selectionColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17),
                                   ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:coronavirusapp/country/countrypage.dart';
 import 'package:coronavirusapp/worldpanel.dart';
@@ -23,16 +22,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          // light mode settings
-          brightness: Brightness.light,
-          primaryColor: lightModeButton,
-          textSelectionColor: lightModeTextColor,
-          buttonColor: lightModeButton),
+        textSelectionTheme: TextSelectionThemeData(
+            // light mode settings
+            selectionColor: lightModeTextColor,
+            cursorColor: Colors.blue,
+        ),
+        colorScheme: ColorScheme.fromSwatch(
+          backgroundColor: lightModeButton
+        ),
+        brightness: Brightness.light,
+        primaryColor: lightModeButton,
+      ),
       darkTheme: ThemeData(
           //dark mode settings
-          brightness: Brightness.dark,
-          textSelectionColor: darkModeTextColor,
-          buttonColor: darkModeButton),
+          textSelectionTheme: TextSelectionThemeData(
+              // light mode settings
+              selectionColor: darkModeTextColor,
+              cursorColor: Colors.red),
+          brightness: Brightness.dark),
       themeMode: ThemeMode.system,
       home: MyHomePage(),
     );
@@ -49,23 +56,24 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Map? worldData;
 
-   fetchGlobalData() async {
+  fetchGlobalData() async {
     var url = Uri.parse("https://disease.sh/v3/covid-19/all");
     var response = await http.get(url);
     setState(() {
       worldData = json.decode(response.body);
     });
   }
+
   Future fetchData() async {
-     fetchGlobalData();
-     print("fetch data called");
+    fetchGlobalData();
+    print("fetch data called");
   }
+
   @override
   void initState() {
     fetchData();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(
                 child: Text("CORONAVIRUS STATS",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23)),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 23)),
                 alignment: Alignment.center,
               ),
               SizedBox(
@@ -121,10 +130,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.all(15),
                     child: Text(
                       "Country Details",
-                      style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                     decoration: BoxDecoration(
-                        color: Theme.of(context).buttonColor,
+                        color: Theme.of(context).colorScheme.background,
                         borderRadius: BorderRadius.circular(15)),
                   ),
                 ),

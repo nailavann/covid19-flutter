@@ -78,12 +78,12 @@ class StatusPanel extends StatelessWidget {
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).textSelectionColor),
+                color: Theme.of(context).textSelectionTheme.selectionColor),
           ),
           Text(
             count,
             style: TextStyle(
-                fontSize: 16, color: Theme.of(context).textSelectionColor),
+                fontSize: 16, color: Theme.of(context).textSelectionTheme.selectionColor),
           )
         ],
       ),
