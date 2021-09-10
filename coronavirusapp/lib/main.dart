@@ -66,7 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future fetchData() async {
     fetchGlobalData();
-    print("fetch data called");
   }
 
   @override
