@@ -45,16 +45,21 @@ class _PieChartPageState extends State<PieChartPage> {
           SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("World Data",style: TextStyle(color: Theme.of(context)
+            child: Text("World Total Stats",style: TextStyle(color: Theme.of(context)
                 .textSelectionTheme.selectionColor,fontSize: 18,fontWeight: FontWeight.bold)),
           ),
+          SizedBox(
+            height: 40,
+          ),
           Expanded(
-            child: PieChart(dataMap: {
-              'Cases': double.parse(worldData!['cases'].toString()),
-              'Active': double.parse(worldData!['active'].toString()),
-              'Recovered': double.parse(worldData!['recovered'].toString()),
-              'Deaths': double.parse(worldData!['deaths'].toString()),
-            }),
+            child: SingleChildScrollView(
+              child: PieChart(dataMap: {
+                'Cases': double.parse(worldData!['cases'].toString()),
+                'Active': double.parse(worldData!['active'].toString()),
+                'Recovered': double.parse(worldData!['recovered'].toString()),
+                'Deaths': double.parse(worldData!['deaths'].toString()),
+              }),
+            ),
           ),
         ],
       )

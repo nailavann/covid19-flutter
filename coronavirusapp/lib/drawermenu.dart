@@ -30,7 +30,7 @@ class DrawerMenu extends StatelessWidget {
                     builder: (context) => CountryPage(),
                   )),
               child: DrawerGenerated(
-                text: "Country Details",
+                text: "Country ",
                 icons: Icon(Icons.coronavirus),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:coronavirusapp/country/countrypiechart.dart';
 import 'package:coronavirusapp/utils/dialogs.dart';
 import 'package:coronavirusapp/utils/search.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,10 @@ class _CountryPageState extends State<CountryPage> {
         actions: [
           IconButton(
             onPressed: () {
-              showSearch(context: context, delegate: Search(countryData!,sortedCountryData!,sortedCheck));
+              showSearch(
+                  context: context,
+                  delegate:
+                      Search(countryData!, sortedCountryData!, sortedCheck));
             },
             icon: Icon(Icons.search),
           ),
@@ -132,7 +136,8 @@ class _CountryPageState extends State<CountryPage> {
                                         : sortedCountry['country'],
                                     style: TextStyle(
                                         color: Theme.of(context)
-                                            .textSelectionTheme.selectionColor,
+                                            .textSelectionTheme
+                                            .selectionColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17),
                                   ),
@@ -149,16 +154,33 @@ class _CountryPageState extends State<CountryPage> {
                                     context,
                                     sortedCheck == false
                                         ? "Continent: " +
-                                        countryDetailData['continent']
+                                            countryDetailData['continent']
                                         : "Continent: " +
-                                        sortedCountry['continent'],
+                                            sortedCountry['continent'],
                                     sortedCheck == false
                                         ? "Population: " +
-                                        countryDetailData['population'].toString()
+                                            countryDetailData['population']
+                                                .toString()
                                         : "Population: " +
-                                        sortedCountry['population'].toString(),
+                                            sortedCountry['population']
+                                                .toString(),
                                     null,
                                     null);
+                              },
+                            ),
+                            IconSlideAction(
+                              color: Colors.indigo,
+                              icon: Icons.pie_chart,
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CountryPieChart(
+                                        countryData: countryDetailData,
+                                        sortedCountryData: sortedCountry,
+                                        sorted: sortedCheck
+                                      ),
+                                    ));
                               },
                             )
                           ],

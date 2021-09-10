@@ -1,4 +1,5 @@
 import 'package:coronavirusapp/country/countrydetailspage.dart';
+import 'package:coronavirusapp/country/countrypiechart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -118,6 +119,21 @@ class Search extends SearchDelegate {
                             suggestionListSorted[index]['population'].toString(),
                         null,
                         null);
+                  },
+                ),
+                IconSlideAction(
+                  color: Colors.indigo,
+                  icon: Icons.pie_chart,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CountryPieChart(
+                              countryData: suggestionListDetail,
+                              sortedCountryData: suggestionListDetailSorted,
+                              sorted: sortedCheck
+                          ),
+                        ));
                   },
                 )
               ],
