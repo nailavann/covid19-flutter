@@ -1,7 +1,6 @@
 import 'package:coronavirusapp/country/countrypage.dart';
 import 'package:coronavirusapp/main.dart';
 import 'package:coronavirusapp/piechartpage.dart';
-import 'package:coronavirusapp/settingspage.dart';
 import 'package:flutter/material.dart';
 
 import 'infopage.dart';
@@ -58,17 +57,7 @@ class DrawerMenu extends StatelessWidget {
                 text: "Info",
                 icons: Icon(Icons.info),
               ),
-            ),InkWell(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SettingsPage(),
-                  )),
-              child: DrawerGenerated(
-                text: "Settings",
-                icons: Icon(Icons.settings),
-              ),
-            ),
+            )
           ],
         ),
       ),
